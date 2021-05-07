@@ -18,18 +18,47 @@ five_colors = {"green", "blue", "orange", "turquoise", "yellow"}
 
 
 def change(x, y):
-    "Change snake direction."
+    """Set the x and y values of aim vector to x and y parameters"""
     aim.x = x
     aim.y = y
 
 
 def inside(head):
-    "Return True if head inside boundaries."
+    """
+    Checks if the head is inside the boundaries.
+
+    Verifies that the given head vector is inside the limits of the
+    screen, returns true if it is and false otherwise.
+
+    Parameters:
+    head: vector -- Vector indicating the position of the snake´s head.
+
+    Returns:
+    bool -- Whether or not the head is inside the limits.
+    """
     return -200 < head.x < 190 and -200 < head.y < 190
 
 
 def move():
-    "Move snake forward one segment."
+    """
+    Moves the snake in the direction that the aim vector specifies.
+
+    This function takes a copy of the last element from snake list.
+    It moves this copy in the direction specified by the global
+    variable aim. It checks if the copy ends up out of bounds or
+    inside the snake´s body. It adds this head to the snake list.
+    It checks if the snake has eaten the food, and if it hasn´t,
+    it removes the added head, if it has, it respawns the food.
+    Finally it draws the snake and the food and waits 100 ms to
+    be called again.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+    """
+
     head = snake[-1].copy()  # Copy of the last vector in snake.
     head.move(aim)  # Modify copied vector with direction of aim.
 
