@@ -24,18 +24,7 @@ def change(x, y):
 
 
 def inside(head):
-    """
-    Checks if the head is inside the boundaries.
-
-    Verifies that the given head vector is inside the limits of the
-    screen, returns true if it is and false otherwise.
-
-    Parameters:
-    head: vector -- Vector indicating the position of the snake´s head.
-
-    Returns:
-    bool -- Whether or not the head is inside the limits.
-    """
+    """Returns whether or not head vector fits in screen limits"""
     return -200 < head.x < 190 and -200 < head.y < 190
 
 
