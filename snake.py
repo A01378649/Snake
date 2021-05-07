@@ -1,5 +1,13 @@
 """
+This program contains functions to run the game of snake.
 
+Welcome to snake!
+
+You move with the arrows.
+Avoid crashing with the walls or your own body.
+Eat the food to grow.
+
+Good luck!
 """
 
 # Related third party libraries.
@@ -16,6 +24,7 @@ aim = vector(0, -10)
 # Set of colors.
 five_colors = {"green", "blue", "orange", "turquoise", "yellow"}
 
+print(__doc__)  # Usage information for the user.
 
 def change(x, y):
     """Set the x and y values of aim vector to x and y parameters"""
