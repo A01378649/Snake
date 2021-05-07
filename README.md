@@ -21,7 +21,7 @@ Octavio Andrick Sánchez Perusquia
 git clone https://github.com/A01378649/Snake.git
 ```
 
-2.- Enter de directory of the repository:
+2.- Enter the directory of the repository:
 ```sh
 cd Snake
 ```
