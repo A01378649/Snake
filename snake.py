@@ -53,7 +53,7 @@ def move():
 
     global food_color
     square(food.x, food.y, 9, food_color)
-    
+
     update()
     ontimer(move, 100)
 
