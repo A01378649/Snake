@@ -3,13 +3,16 @@
 """
 
 # Related third party libraries.
-from turtle import update, ontimer, setup, hideturtle, tracer, listen, onkey, done, clear
+from turtle import update, ontimer, setup,     \
+                   hideturtle, tracer, listen, \
+                   onkey, done, clear, color
 from random import randrange
 from freegames import square, vector
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+five_colors = {"green", "blue", "orange", "turquoise", "yellow"}
 
 
 def change(x, y):
@@ -29,14 +32,14 @@ def move():
     head.move(aim)
 
     if not inside(head) or head in snake:
-        square(head.x, head.y, 9, 'red')
+        square(head.x, head.y, 9, "red")
         update()
         return
 
     snake.append(head)
 
     if head == food:
-        print('Snake:', len(snake))
+        print("Snake:", len(snake))
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
     else:
@@ -44,12 +47,16 @@ def move():
 
     clear()
 
+    global snake_color
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, snake_color)
 
-    square(food.x, food.y, 9, 'green')
+    global food_color
+    square(food.x, food.y, 9, food_color)
+    
     update()
     ontimer(move, 100)
+
 
 # Initial steps.
 setup(420, 420, 370, 0)
@@ -58,9 +65,15 @@ tracer(False)
 
 # Always active.
 listen()
-onkey(lambda: change(10, 0), 'Right')
-onkey(lambda: change(-10, 0), 'Left')
-onkey(lambda: change(0, 10), 'Up')
-onkey(lambda: change(0, -10), 'Down')
+onkey(lambda: change(10, 0), "Right")
+onkey(lambda: change(-10, 0), "Left")
+onkey(lambda: change(0, 10), "Up")
+onkey(lambda: change(0, -10), "Down")
+
+# Get 2 distinct colors from color set.
+food_color = next(iter(five_colors))
+five_colors.remove(food_color)
+snake_color = next(iter(five_colors))
+
 move()
 done()
