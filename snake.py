@@ -109,7 +109,8 @@ def movef():
     hztl = bool(getrandbits(1))
     
     if(inside(food)):
-        food.move(vector(randrange(-1,2) * 10 * int(hztl), randrange(-1,2) * 10 * int(not hztl)))
+        food.move(vector(randrange(-1,2) * 10 * int(hztl),
+                         randrange(-1,2) * 10 * int(not hztl)))
     else:
         food.x = 0
         food.y = 0
