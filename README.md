@@ -6,6 +6,10 @@ Luis Ignacio Ferro Salinas
 * Implemented the code to give the snake and the food random different colors among a set of 5 colors everytime the program runs.
 * Checked style of script following PEP-8 guidelines.
 
+Octavio Andrick Sánchez Perusquia
+* Implemented food movement such that it moves one unit periodically.
+* Checked style of script following PEP-8 guidelines.
+
 ## Install
 1.- Install [git] on your computer.
 
