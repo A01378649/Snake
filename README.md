@@ -1,20 +1,23 @@
 # Snake
+A program that runs the classic game of snake with a few changes.
 
-Un juego de snake pero con algunas cualidades.
+## Install
+1.- Install [git] on your computer.
 
-# Installation
+2.- If you have not installed [python] on your computer, do it.
 
-If python is added to the path as "python", then type in the terminal:
-
+## Use
+1.- In the terminal, type:
 ```sh
 python snake.py
 ```
-to run
 
-# Usage
+2.- Read the instructions when the program runs.
 
-
-# Credits
+## Credits
 Code revised by:
 - Luis Ignacio Ferro Salinas
 - Andrick
+
+[git]: <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
+[python]: <https://www.python.org/downloads/>
