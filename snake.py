@@ -10,12 +10,14 @@ Exercises
 """
 
 from turtle import *
-from random import randrange
+from random import randrange, getrandbits
 from freegames import square, vector
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+global cont
+cont = 0
 
 def change(x, y):
     "Change snake direction."
@@ -28,6 +30,7 @@ def inside(head):
 
 def move():
     "Move snake forward one segment."
+    global cont
     head = snake[-1].copy()
     head.move(aim)
 
@@ -50,10 +53,31 @@ def move():
     for body in snake:
         square(body.x, body.y, 9, 'black')
 
+    #Move the food 1 time each time the snake moves 5 times
+    cont = (cont + 1) % 5
+    if(cont == 0):
+        movef()
+        
     square(food.x, food.y, 9, 'green')
     update()
     ontimer(move, 100)
+    
 
+def movef():
+    """
+    This function moves the snake food to random contiguous position.
+    
+    This function takes no arguments.
+    """
+    hztl = bool(getrandbits(1))
+    
+    if(inside(food)):
+        food.move(vector(randrange(-1,2) * 10 * int(hztl), randrange(-1,2) * 10 * int(not hztl)))
+    else:
+        food.x = 0
+        food.y = 0
+            
+            
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
