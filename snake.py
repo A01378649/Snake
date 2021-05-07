@@ -14,7 +14,7 @@ Good luck!
 from turtle import update, ontimer, setup,     \
                    hideturtle, tracer, listen, \
                    onkey, done, clear, color
-from random import randrange
+from random import randrange, getrandbits
 from freegames import square, vector
 
 # Global variables.
@@ -23,6 +23,8 @@ snake = [vector(10, 0)]  # List of vectors.
 aim = vector(0, -10)
 # Set of colors.
 five_colors = {"green", "blue", "orange", "turquoise", "yellow"}
+# Timer controller for food movement
+cont = 0
 
 print(__doc__)  # Usage information for the user.
 
@@ -82,6 +84,12 @@ def move():
     global snake_color
     for body in snake:
         square(body.x, body.y, 9, snake_color)
+        
+    #Move the food 1 time each time the snake moves 5 times
+    global cont
+    cont = (cont + 1) % 5
+    if(cont == 0):
+        movef()
 
     # Draw the food.
     global food_color
@@ -90,6 +98,21 @@ def move():
     update()  # Update the screen when tracer is off.
 
     ontimer(move, 100)  # Wait 100 ms to call move.
+    
+
+def movef():
+    """
+    This function moves the snake food to random contiguous position.
+    
+    This function takes no arguments.
+    """
+    hztl = bool(getrandbits(1))
+    
+    if(inside(food)):
+        food.move(vector(randrange(-1,2) * 10 * int(hztl), randrange(-1,2) * 10 * int(not hztl)))
+    else:
+        food.x = 0
+        food.y = 0
 
 
 # Initial steps.
