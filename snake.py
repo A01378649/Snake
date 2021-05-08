@@ -28,6 +28,7 @@ cont = 0
 
 print(__doc__)  # Usage information for the user.
 
+
 def change(x, y):
     """Set the x and y values of aim vector to x and y parameters"""
     aim.x = x
